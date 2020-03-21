@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { UserDetailsComponent } from './user-details.component';
+import { UsersComponent } from './users.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ListModule } from '../../common/list/list.module';
@@ -8,15 +8,15 @@ import { ListModule } from '../../common/list/list.module';
 const routes: Routes = [
   {
     path: '',
-    component: UserDetailsComponent
+    component: UsersComponent
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes), CommonModule, ListModule],
-  exports: [UserDetailsComponent, RouterModule],
-  declarations: [UserDetailsComponent],
-  providers: [],
+  exports: [UsersComponent, RouterModule],
+  declarations: [UsersComponent],
+  providers: []
 })
-export class UserDetailsModule {
+export class UsersModule {
 }

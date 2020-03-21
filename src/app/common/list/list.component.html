@@ -1,0 +1,21 @@
+<ul>
+  <li *ngFor="let item of list" [routerLink]="userMode ? ('/user/' + item.username) : ('/repo/' + item.name)">
+    <img *ngIf="userMode" [src]="item.avatar">
+    <p>{{userMode ? item.username : item.name}}</p>
+    <svg>
+      <use [attr.xlink:href]="iconPath + 'arrow.svg#Capa_1'"></use>
+    </svg>
+  </li>
+  <div *ngIf="loading" class="loading">
+    <div class="lds-roller">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</ul>

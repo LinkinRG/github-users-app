@@ -5,12 +5,12 @@ import { Subscription } from 'rxjs';
 import { ICONS } from '../../utils';
 
 @Component({
-  selector: 'app-user-list',
-  templateUrl: 'user-list.component.html',
-  styleUrls: ['user-list.component.scss']
+  selector: 'app-users',
+  templateUrl: 'users.component.html',
+  styleUrls: ['users.component.scss']
 })
 
-export class UserListComponent implements OnInit, OnDestroy {
+export class UsersComponent implements OnInit, OnDestroy {
   public iconPath: string = ICONS;
   public userList: User[] = [];
   public loading: boolean = false;

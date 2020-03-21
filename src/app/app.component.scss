@@ -5,10 +5,13 @@
   min-height: 100vh;
   header {
     height: 70px;
+    width: 100%;
+    position: fixed;
     flex-shrink: 0;
   }
   .main-content {
     flex-grow: 1;
+    margin-top: 70px;
     //flex: 1;
     display: flex;
     //min-height: calc(100% - 170px);

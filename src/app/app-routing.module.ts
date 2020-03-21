@@ -12,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'users',
-    loadChildren: () => import('./partials/user-list/user-list.module').then(m => m.UserListModule)
+    loadChildren: () => import('./partials/users/users.module').then(m => m.UsersModule)
   },
   {
     path: 'error-404',

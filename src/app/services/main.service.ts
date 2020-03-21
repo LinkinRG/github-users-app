@@ -19,18 +19,18 @@ export class MainService {
   }
 
   public getUserDetails(username: string): Observable<any> {
-    return this.http.get(`${API}user/${username}`);
+    return this.http.get(`${API}users/${username}`);
   }
 
-  public getUserRepos(username: string): Observable<any> {
-    return this.http.get(`${API}user/${username}/repos`);
+  public getUserRepos(username: string, page: number, perPage: number): Observable<any> {
+    return this.http.get(`${API}users/${username}/repos?page=${page}&per_page=${perPage}`);
   }
 
-  public getUserFollowers(username: string): Observable<any> {
-    return this.http.get(`${API}user/${username}/repos`);
+  public getUserFollowers(username: string, page: number, perPage: number): Observable<any> {
+    return this.http.get(`${API}users/${username}/followers?page=${page}&per_page=${perPage}`);
   }
 
-  public getUserFollowing(username: string): Observable<any> {
-    return this.http.get(`${API}user/${username}/repos`);
+  public getUserFollowing(username: string, page: number, perPage: number): Observable<any> {
+    return this.http.get(`${API}users/${username}/following?page=${page}&per_page=${perPage}`);
   }
 }

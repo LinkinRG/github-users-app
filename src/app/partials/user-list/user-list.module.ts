@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { UserListComponent } from './user-list.component';
 import { RouterModule, Routes } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   {
@@ -11,7 +12,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes), CommonModule],
   exports: [UserListComponent, RouterModule],
   declarations: [UserListComponent],
   providers: []

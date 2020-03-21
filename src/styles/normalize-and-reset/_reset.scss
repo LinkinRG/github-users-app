@@ -1,0 +1,106 @@
+body,
+form,
+fieldset,
+legend,
+table,
+th,
+td,
+caption,
+hr,
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+figure,
+p,
+pre,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+
+input, button, select, select:active {
+  background-color: transparent;
+  border: 0;
+  //padding: 0 28px;
+  border: none;
+  outline: none!important;
+}
+
+body{
+  //max-width: 700px;
+  //margin-left: auto;
+  //margin-right: auto;
+  -webkit-text-size-adjust: none;
+}
+
+
+/**
+ * Work around a Firefox/IE bug where the transparent `button` background
+ * results in a loss of the default `button` focus styles.
+ */
+
+
+button:focus {
+  outline: none;
+}
+
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+
+iframe {
+  border: 0;
+}
+
+
+ol,
+ul {
+  list-style: none;
+  outline: none;
+}
+li:focus {
+  outline: none;
+}
+
+div:focus {
+  outline: none;
+}
+[tabindex="-1"]:focus {
+  outline: none !important;
+}
+abbr[title],
+dfn[title] {
+  cursor: help;
+}
+u,
+ins {
+  text-decoration: none;
+}
+ins {
+  border-bottom: 1px solid;
+}
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 10px;
+  line-height: 1 !important;
+  text-size-adjust: none;
+  overflow: auto;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}

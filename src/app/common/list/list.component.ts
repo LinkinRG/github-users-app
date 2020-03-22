@@ -11,7 +11,7 @@ export class ListComponent implements OnInit {
   public iconPath: string = ICONS;
   @Input() public userMode: boolean = true;
   @Input() public list: any[] = [];
-  @Input() public loading: boolean = false;
+  @Input() public loading: boolean = true;
 
   constructor() {
   }

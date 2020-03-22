@@ -1,5 +1,5 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MainService } from '../../services/main.service';
 import { User } from '../../models/user';
@@ -16,25 +16,26 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
   public user: User = new User();
   public activeList: any = [];
   public selectedMenu: string = 'REPOS';
-  public loading: boolean = false;
+  public loading: boolean = true;
 
   private paramSubcription: Subscription;
   private getUserDetailsSubscription: Subscription;
   private getFollowersSubscription: Subscription;
   private getReposSubscription: Subscription;
   private getFollowingSubscription: Subscription;
+  private navigationSubscription: Subscription;
   private page: number = 0;
   private perPage: number = 20;
 
-  constructor(private route: ActivatedRoute, private mainService: MainService) {
+  constructor(private route: ActivatedRoute, private mainService: MainService, private router: Router) {
+    this.navigationSubscription = this.router.events.subscribe((e: any) => {
+      if (e instanceof NavigationEnd) {
+        this.initialize();
+      }
+    });
   }
 
   ngOnInit() {
-    this.paramSubcription = this.route.params.subscribe(
-      (params) => {
-        this.getUserDetails(params.username);
-      }
-    );
   }
 
   public ngOnDestroy(): void {
@@ -52,6 +53,9 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
     }
     if (this.getFollowingSubscription) {
       this.getFollowingSubscription.unsubscribe();
+    }
+    if (this.navigationSubscription) {
+      this.navigationSubscription.unsubscribe();
     }
   }
 
@@ -100,6 +104,17 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
     }
   }
 
+  private initialize(): void {
+    this.page = 0;
+    this.selectedMenu = 'REPOS';
+    this.activeList = [];
+    this.paramSubcription = this.route.params.subscribe(
+      (params) => {
+        this.getUserDetails(params.username);
+      }
+    );
+  }
+
   private getUserDetails(username): void {
     this.getUserDetailsSubscription = this.mainService.getUserDetails(username).subscribe(
       (response) => {
@@ -145,7 +160,7 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
     this.getReposSubscription = this.mainService.getUserRepos(this.user.username, ++this.page, this.perPage).subscribe(
       (response) => {
         this.activeList = [...this.activeList, ...response.map((user) => {
-          return { name: user.name, id: user.id };
+          return { name: user.name, id: user.id, url: user.full_name };
         })];
         this.loading = false;
       }

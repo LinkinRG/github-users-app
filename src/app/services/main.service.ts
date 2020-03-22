@@ -33,4 +33,12 @@ export class MainService {
   public getUserFollowing(username: string, page: number, perPage: number): Observable<any> {
     return this.http.get(`${API}users/${username}/following?page=${page}&per_page=${perPage}`);
   }
+
+  public getRepository(url: string): Observable<any> {
+    return this.http.get(`${API}repos/${url}`);
+  }
+
+  public getContributors(url: string, page: number, perPage: number): Observable<any> {
+    return this.http.get(`${API}repos/${url}/contributors?page=${page}&per_page=${perPage}`);
+  }
 }

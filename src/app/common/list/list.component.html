@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="let item of list" [routerLink]="userMode ? ('/user/' + item.username) : ('/repo/' + item.name)">
+  <li *ngFor="let item of list" [routerLink]="userMode ? ('/user/' + item.username) : ('/repo/' + item.url)">
     <img *ngIf="userMode" [src]="item.avatar">
     <p>{{userMode ? item.username : item.name}}</p>
     <svg>
@@ -17,5 +17,8 @@
       <div></div>
       <div></div>
     </div>
+  </div>
+  <div class="empty" *ngIf="!loading && list.length === 0">
+    <h1>List is Empty</h1>
   </div>
 </ul>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ICONS } from '../../utils';
 
 @Component({
   selector: 'app-header',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class HeaderComponent implements OnInit {
+  public iconPath: string = ICONS;
+
   constructor() {
   }
 

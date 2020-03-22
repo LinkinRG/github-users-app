@@ -13,7 +13,7 @@ import { ICONS } from '../../utils';
 export class UsersComponent implements OnInit, OnDestroy {
   public iconPath: string = ICONS;
   public userList: User[] = [];
-  public loading: boolean = false;
+  public loading: boolean = true;
 
   private getUsersSubscription: Subscription;
   private page: number = 0;

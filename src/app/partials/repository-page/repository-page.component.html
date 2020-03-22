@@ -1,0 +1,7 @@
+<div class="container">
+  <h1>{{repo.name}}</h1>
+  <h3>Contributors</h3>
+  <div class="list-container">
+    <app-list [loading]="loading" [list]="repo.contributors"></app-list>
+  </div>
+</div>
